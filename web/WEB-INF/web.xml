@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>Procurement_System</display-name>
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+        <welcome-file>login.htm</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list> 
+    <filter>
+        <filter-name>SessionFilter</filter-name>
+        <filter-class>
+            com.ps.filter.RequestFilter
+        </filter-class>
+        <init-param>
+            <param-name>avoid-urls</param-name>
+            <param-value>/Login.do,/logo.jpg</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <context-param>
+        <param-name>mailserver</param-name>
+        <param-value>kevin@172.20.131.52</param-value>
+    </context-param>
+    <context-param>
+        <param-name>adminmail</param-name>
+        <param-value>Gallen.Kuo@advantech.com.tw</param-value>
+    </context-param>
+    <context-param>
+        <param-name>adminphone</param-name>
+        <param-value>6815</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <jsp-file>/pages/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/Home</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Order</servlet-name>
+        <jsp-file>/pages/order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Order</servlet-name>
+        <url-pattern>/Order</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>History</servlet-name>
+        <jsp-file>/pages/listhistory.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>History</servlet-name>
+        <url-pattern>/History</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Manage</servlet-name>
+        <jsp-file>/pages/managerpage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Manage</servlet-name>
+        <url-pattern>/Manage</url-pattern> 
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProductManage</servlet-name>
+        <jsp-file>/pages/product.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductManage</servlet-name>
+        <url-pattern>/ProductManage</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Document</servlet-name>
+        <jsp-file>/pages/document.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Document</servlet-name>
+        <url-pattern>/Document</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <jsp-file>/login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AlterAfford</servlet-name>
+        <jsp-file>/pages/addorder.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AlterAfford</servlet-name>
+        <url-pattern>/AlterAfford</url-pattern> 
+    </servlet-mapping>
+    <!--    <listener>
+        <listener-class>com.ps.listener.QuartzContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.quartz.ee.servlet.QuartzInitializerListener</listener-class>
+    </listener>-->
+
+    <!--    <servlet>
+        <servlet-name>InsertDataTest</servlet-name>
+        <servlet-class>com.ps.servlet.InsertDataTest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertDataTest</servlet-name>
+        <url-pattern>/InsertDataTest</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>QuartzInitializer</servlet-name>
+        <servlet-class>
+            org.quartz.ee.servlet.QuartzInitializerServlet
+        </servlet-class>
+        <init-param>
+            <param-name>config-file</param-name>　
+            <param-value>/quartz.properties</param-value>　
+        </init-param>
+        <init-param>
+            <param-name>shutdown-on-unload</param-name>　
+            <param-value>true</param-value>　
+        </init-param>
+        <init-param>
+            <param-name>start-scheduler-on-load</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
+    </servlet>-->
+    <!--    <filter>
+        <filter-name>auth</filter-name>
+        <filter-class>com.ps.filter.RequestFilter</filter-class>
+    </filter>-->
+    <context-param>
+        <param-name>quartz:wait-on-shutdown</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <session-config>
+        <session-timeout>
+            20
+        </session-timeout>
+    </session-config>
+    <resource-ref>
+        <description>MFG-SEVER</description>
+        <res-ref-name>jdbc/demo</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</web-app>

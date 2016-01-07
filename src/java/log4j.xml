@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd" >
+<log4j:configuration>
+
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %x[Procurement_System-%p] %m (%c.%M:%L)%n"/>
+        </layout>
+    </appender>
+    <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="append" value="true" />
+        <param name="file" value="D:/Procurement_System_log/Procurement_System.log" />
+        <param name="DatePattern" value="'.'yyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" 
+                       value="%d{yyyy-MM-dd HH:mm:ss.SSS} %x[Procurement_System-%p] %m (%c.%M:%L)%n" />
+        </layout>
+    </appender>
+
+
+    <root>
+        <!--<priority value="TRACE" />-->
+        <level value="INFO" />
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="file" />
+    </root>
+
+</log4j:configuration>
